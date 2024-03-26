@@ -12,6 +12,11 @@ type user struct {
 	createdAt time.Time
 }
 
+// u is the parameter name  / user is the value type
+func (u user) outputUserDetails() {
+	fmt.Println(u.firstName, u.lastName, u.birthdate)
+}
+
 func main() {
 	userFirstName := getUserData("Please enter your first name: ")
 	userLastName := getUserData("Please enter your last name: ")
@@ -27,12 +32,8 @@ func main() {
 		createdAt: time.Now(),
 	}
 
-	outputUserDetails(&appUser)
-}
-
-// u is the parameter name  / user is the value type
-func outputUserDetails(u *user) {
-	fmt.Println(u.firstName, u.lastName, u.birthdate)
+	//outputUserDetails(&appUser)
+	appUser.outputUserDetails()
 }
 
 func getUserData(promptText string) string {
