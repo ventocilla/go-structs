@@ -13,8 +13,13 @@ type user struct {
 }
 
 // u is the parameter name  / user is the value type
-func (u user) outputUserDetails() {
+func (u *user) outputUserDetails() {
 	fmt.Println(u.firstName, u.lastName, u.birthdate)
+}
+
+func (u *user) clearUserName() {
+	u.firstName = ""
+	u.lastName = ""
 }
 
 func main() {
@@ -32,7 +37,8 @@ func main() {
 		createdAt: time.Now(),
 	}
 
-	//outputUserDetails(&appUser)
+	appUser.outputUserDetails()
+	appUser.clearUserName()
 	appUser.outputUserDetails()
 }
 
